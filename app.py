@@ -21,13 +21,14 @@ def create_app() -> Flask:
         q = (request.args.get("q") or "").strip()
         if q:
             q_lower = q.lower()
-            filtered = [
+            # Search title and body text case-insensitively.
+            filtered_notes = [
                 n for n in app.notes
                 if q_lower in n["title"].lower() or q_lower in n["body"].lower()
             ]
         else:
-            filtered = app.notes
-        return render_template("home.html", notes=filtered, q=q)
+            filtered_notes = app.notes
+        return render_template("home.html", notes=filtered_notes, q=q)
 
     @app.route("/notes/new", methods=["GET", "POST"])
     def new_note():
