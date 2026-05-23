@@ -35,6 +35,16 @@ python app.py
 6. Run the tests: `pytest`.
 7. Commit, push, open a PR.
 
+## Running tests
+
+Run the full test suite with:
+
+```bash
+python -m pytest -q
+```
+
+Each task has a matching test file in `tests/`; the task is done when its tests pass.
+
 ## Repo layout
 
 ```
