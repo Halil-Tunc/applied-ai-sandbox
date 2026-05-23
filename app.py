@@ -24,7 +24,8 @@ def create_app() -> Flask:
             # Search title and body text case-insensitively.
             filtered_notes = [
                 n for n in app.notes
-                if q_lower in n["title"].lower() or q_lower in n["body"].lower()
+                if q_lower in n.get("title", "").lower()
+                or q_lower in n.get("body", "").lower()
             ]
         else:
             filtered_notes = app.notes
